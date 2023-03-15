@@ -14,11 +14,13 @@ app.use(express.urlencoded({ extended: false }));
 const mainRouter = require('./routes'); //./router/index.js 생략
 const userRouter = require('./routes/users');
 const boardRouter = require('./routes/board');
+const dbRouter = require('./routes/db');
 
 // 사용 '/파일.js//
 app.use('/', mainRouter);
 app.use('/users', userRouter);
 app.use('/board', boardRouter);
+app.use('/db', dbRouter);
 
 //
 app.use((err, req, res, next) => {
