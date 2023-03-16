@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const cookieParser = require('cookie-parser');
 
 const app = express();
 const PORT = 4000;
@@ -9,18 +10,23 @@ app.set('view engine', 'ejs'); //ejs 로 view로 사용하겠다//
 app.use(express.static('public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
 
 // 라우터 (파일) //
 const mainRouter = require('./routes'); //./router/index.js 생략
 const userRouter = require('./routes/users');
 const boardRouter = require('./routes/board');
 const dbRouter = require('./routes/db');
+const dbBoardRouter = require('./routes/dbBoard');
+const cookieRouter = require('./routes/cookie');
 
 // 사용 '/파일.js//
 app.use('/', mainRouter);
 app.use('/users', userRouter);
 app.use('/board', boardRouter);
 app.use('/db', dbRouter);
+app.use('/dbBoard', dbBoardRouter);
+app.use('/cookie', cookieRouter);
 
 //
 app.use((err, req, res, next) => {
