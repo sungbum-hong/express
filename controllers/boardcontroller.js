@@ -10,9 +10,9 @@ const boardDB = {
     });
   },
   // 게시글 추가하기
-  writeArticle: (newArticle, cb) => {
+  writeArticle: ({ title, content, id }, cb) => {
     connection.query(
-      `INSERT INTO mydb.board (TITLE, CONTENT) values ('${newArticle.title}', '${newArticle.content}')`,
+      `INSERT INTO mydb.board (TITLE, CONTENT, USERID) values ('${title}', '${content}', '${id}')`,
       (err, data) => {
         if (err) throw err;
         cb(data);
