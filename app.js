@@ -12,7 +12,7 @@ app.set('view engine', 'ejs'); //ejs 로 view로 사용하겠다//
 app.use(express.static('public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser('sb'));
+app.use(cookieParser('sb')); // 쿠키암호화 //
 app.use(
   session({
     secret: 'sb',
