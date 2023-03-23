@@ -10,6 +10,7 @@ const { PORT } = process.env;
 app.use(cors());
 app.set('view engine', 'ejs'); //ejs 로 view로 사용하겠다//
 app.use(express.static('public'));
+app.use('/uploads', express.static('uploads'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser('sb')); // 쿠키암호화 //
